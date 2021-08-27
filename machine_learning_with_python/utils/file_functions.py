@@ -26,7 +26,6 @@ from rich.console import Console
 from rich.table import Table
 
 import machine_learning_with_python
-from machine_learning_with_python import fileobject
 from machine_learning_with_python.constants import (
     FIFTY_THOUSAND,
     FIVE_HUNDRED_THOUSAND,
@@ -48,31 +47,10 @@ LOGGER = get_logger(__name__, provider="File Functions", level=logging.DEBUG)
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
-
-if PY2:
-    from six.moves.urllib.parse import urlparse
-elif PY3:
-    pass
-
-
 # https://gist.github.com/wassname/1393c4a57cfcbf03641dbc31886123b8
 # python convert string to safe filename
 VALID_FILENAME_CHARS = "-_.() %s%s" % (string.ascii_letters, string.digits)
 CHAR_LIMIT = 255
-
-
-FileSystem = Union[list["FileInfo"], list[None]]
-FileSystemPaths = Union[list["pathlib.Path"], list[None]]
-ChunkedMetadata = Union[list[Tuple[str, int]], list[None]]
-
-JSON_EXTENSIONS = [".json", ".JSON"]
-VIDEO_EXTENSIONS = [".mp4", ".mov", ".MP4", ".MOV"]
-AUDIO_EXTENSIONS = [".mp3", ".MP3"]
-GIF_EXTENSIONS = [".gif", ".GIF"]
-MKV_EXTENSIONS = [".mkv", ".MKV"]
-M3U8_EXTENSIONS = [".m3u8", ".M3U8"]
-WEBM_EXTENSIONS = [".webm", ".WEBM"]
-IMAGE_EXTENSIONS = [".png", ".jpeg", ".jpg", ".gif", ".PNG", ".JPEG", ".JPG", ".GIF"]
 
 
 def get_dataframe_from_csv(
