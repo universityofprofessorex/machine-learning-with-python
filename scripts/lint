@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+# pylint -E --rcfile=./lint-configs-python/python/.pylintrc
+pylint --disable=all --enable=F,E --rcfile ./lint-configs-python/python/pylintrc machine_learning_with_python
+# TODO: Re enable these guys 2/17/2021
+# flake8 machine_learning_with_python --exclude=machine_learning_with_python/db/migrations
+# mypy machine_learning_with_python
+
+# black --check machine_learning_with_python --diff
+# isort --recursive --check-only machine_learning_with_python

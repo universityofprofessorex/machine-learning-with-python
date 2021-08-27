@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+isort --recursive  --force-single-line-importsmachine_learning_with_pythonp tests
+autoflake --recursive --remove-all-unused-imports --remove-unused-variables --in-place machine_learning_with_python tests
+black machine_learning_with_python tests
+isort --recursive machine_learning_with_python tests

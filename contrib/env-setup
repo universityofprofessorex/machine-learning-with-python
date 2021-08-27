@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+pyenv shell 3.9.0
+
+export WORKON_HOME="$HOME/.pyenv/versions"
+export PROJECT_HOME=$HOME/dev
+
+mkvirtualenv machine-learning-with-python3
+
+workon machine-learning-with-python3
+
+pip install -e .[dev,tests,docs]

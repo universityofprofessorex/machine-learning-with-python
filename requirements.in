@@ -1,0 +1,210 @@
+
+cython
+
+matplotlib
+Pillow
+pip-tools
+# pipdeptree
+# progressbar2
+# requests
+# scenedetect[opencv]
+# scikit-image
+# scikit-learn
+# scipy
+# seaborn
+# statsmodels
+# tensorflow
+# nltk
+# h5py
+# statistics
+# tweepy
+# plotly
+# beautifulsoup4
+# -e git://github.com/GantMan/nsfw_model.git#egg=nsfw-detector
+# -e git://github.com/PySimpleSQL/PySimpleSQL.git#egg=pysimplesql
+# torch
+# torchvision
+# torchaudio
+# # needed for mediafile
+# SOURCE: https://www.tutorialspoint.com/python_digital_forensics/python_digital_forensics_investigating_embedded_metadata.htm
+mutagen
+# pysimplegui
+loguru
+piexif
+
+# # needed for https://github.com/A2Zadeh/CMU-MultimodalSDK#user-content-installation
+# h5py
+validators
+tqdm
+requests
+transformers
+tokenizers
+simpletransformers
+# gensim
+# sqlite3
+pydantic[email]
+passlib[bcrypt]
+Unidecode
+python-slugify
+
+# Überzug is a command line util which allows to draw images on terminals by using child windows.
+# ueberzug
+
+# Asciimatics is a package to help people create full-screen text UIs (from interactive forms to ASCII animations) on any platform. It is licensed under the Apache Software Foundation License 2.0.
+# https://stackoverflow.com/questions/59223002/tmux-how-to-display-an-image-in-a-pane
+# asciimatics
+
+# A library for creating CUI/TUI interfaces with pre-built widgets in python.
+# Easily build text-based user interfaces on both Linux and Windows.
+# https://github.com/jwlodek/py_cui
+
+# A command line interface for working with git written in python with the help of py_cui.
+# https://github.com/jwlodek/pyautogit
+# py_cui
+appdirs
+imageio
+imageio-ffmpeg
+
+# Dask is a flexible parallel computing library for analytics. See documentation for more information.
+dask
+pretty_errors
+
+# This Python module provides bindings for the PortAudio library and a few convenience functions to play and record NumPy arrays containing audio signals.
+# The sounddevice module is available for Linux, macOS and Windows.
+sounddevice
+
+# SoundFile is an audio library based on libsndfile, CFFI and NumPy. Full documentation is available on http://pysoundfile.readthedocs.org/.
+# SoundFile can read and write sound files. File reading/writing is supported through libsndfile, which is a free, cross-platform, open-source (LGPL) library for reading and writing many different sampled sound file formats that runs on many platforms including Windows, OS X, and Unix. It is accessed through CFFI, which is a foreign function interface for Python calling C code. CFFI is supported for CPython 2.6+, 3.x and PyPy 2.0+. SoundFile represents audio data as NumPy arrays.
+# SoundFile is BSD licensed (BSD 3-Clause License).
+# (c) 2013, Bastian Bechtold
+SoundFile
+
+# Read music meta data and length of MP3, OGG, OPUS, MP4, M4A, FLAC, WMA and Wave files
+# https://github.com/bossjones/tinytag/tarball/master#egg=tinytag
+
+# Measures the displayed width of unicode strings in a terminal
+wcwidth
+
+# Manipulate audio with an simple and easy high level interface
+pydub
+
+# live RestructuredText preview
+pygments<2.8
+
+# https://github.com/willmcgugan/rich
+# Rich is a Python library for rich text and beautiful formatting in the terminal.
+
+# The Rich API makes it easy to add color and style to terminal output. Rich can also render pretty tables, progress bars, markdown, syntax highlighted source code, tracebacks, and more - out of the box.
+rich
+
+# ASCII art is also known as "computer text art". It involves the smart placement of typed special characters or letters to make a visual shape that is spread over multiple lines of text.
+# ART is a Python lib for text converting to ASCII art fancy. ;-)
+# https://pypi.org/project/art/
+art
+colormath
+colorthief
+
+# https://github.com/disqus/gutter
+# Gutter is feature switch management library. It allows users to create feature switches and setup conditions those switches will be enabled for. Once configured, switches can then be checked against inputs (requests, user objects, etc) to see if the switches are active.
+gutter
+
+logging_tree
+
+# https://github.com/rochacbruno/dynaconf
+# feature flags support
+dynaconf
+
+better_exceptions
+
+# Display an image in terminal.
+# timg
+pyfzf
+# xdg
+# SOURCE: https://pypi.org/project/uritools/
+# This module provides RFC 3986 compliant functions for parsing, classifying and composing URIs and URI references, largely replacing the Python Standard Library's urllib.parse module.
+uritools
+uritemplate
+youtube_dl
+# https://pypi.org/project/ffmpeg-normalize/
+# https://superuser.com/questions/323119/how-can-i-normalize-audio-using-ffmpeg
+ffmpeg-normalize
+gallery-dl
+factory-boy
+
+
+# alembic
+
+# SQLAlchemy
+# SQLAlchemy-Utils
+tenacity
+scenedetect[opencv]
+imutils
+
+# Python-tesseract is an optical character recognition (OCR) tool for python. That is, it will recognize and "read" the text embedded in images.
+
+# Python-tesseract is a wrapper for Google's Tesseract-OCR Engine. It is also useful as a stand-alone invocation script to tesseract, as it can read all image types supported by the Pillow and Leptonica imaging libraries, including jpeg, png, gif, bmp, tiff, and others. Additionally, if used as a script, Python-tesseract will print the recognized text instead of writing it to a file.
+pytesseract
+
+# https://github.com/FedeClaudi/pyinspect/tree/b58f56d4e3be7245c04d563d18768a30895d1e48
+pyinspect
+aiohttp
+aiosql
+pytz
+boto3
+meilisearch
+backoff
+
+# https://github.com/cdown/srt
+srt
+deepspeech
+librosa
+
+
+
+
+# ml stuff from https://github.com/universityofprofessorex/fzf-lab/blob/main/ml/requirements.in
+# Fast hierarchical clustering routines for R and Python.
+fastcluster
+# Read and write HDF5 files from Python
+h5py
+# TensorFlow Keras.
+keras
+# seaborn: statistical data visualization
+seaborn
+# Statistical computations and models for Python
+statsmodels
+# TensorFlow is an open source machine learning framework for everyone.
+tensorflow
+# TensorFlow Hub is a repository of trained machine learning models.
+tensorflow_hub
+# Natural Language Toolkit
+nltk
+# An open-source, interactive data visualization library for Python
+plotly
+# Screen-scraping library
+beautifulsoup4
+
+# DISABLED: # for now # -e git://github.com/GantMan/nsfw_model.git#egg=nsfw-detector
+# Tensors and Dynamic neural networks in Python with strong GPU acceleration
+torch
+# image and video datasets and models for torch deep learning
+torchvision
+# An audio package for PyTorch
+torchaudio
+
+
+# needed for https://github.com/A2Zadeh/CMU-MultimodalSDK#user-content-installation
+
+# Python Data Validation for Humans™.
+validators
+# Fast, Extensible Progress Meter
+tqdm
+# State-of-the-art Natural Language Processing for TensorFlow 2.0 and PyTorch
+transformers
+# Fast and Customizable Tokenizers
+tokenizers
+# An easy-to-use wrapper library for the Transformers library.
+simpletransformers
+# Python framework for fast Vector Space Modelling
+gensim
+quandl
