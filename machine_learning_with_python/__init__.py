@@ -13,4 +13,6 @@ __maintainer__ = "@IamProfessorEX"
 __maintainer_email__ = "jarvis@theblacktonystark.com"
 __github_username__ = "IamProfessorEX"
 __copyright__ = "2020-2021"
-__repo_name__ = "https://github.com/universityofprofessorex/machine-learning-with-python"
+__repo_name__ = (
+    "https://github.com/universityofprofessorex/machine-learning-with-python"
+)

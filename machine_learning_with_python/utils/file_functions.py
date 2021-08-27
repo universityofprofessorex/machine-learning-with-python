@@ -1,25 +1,14 @@
 from __future__ import annotations
 
-import contextlib
-from contextlib import contextmanager
-from datetime import datetime
 import errno
-import json
 import logging
-import os
 import pathlib
-from pathlib import Path, PosixPath
 import select
-import shutil
-from shutil import copy2
-import stat
 import string
 import sys
-from tempfile import NamedTemporaryFile
-import traceback
 import unicodedata
 
-from typing import TYPE_CHECKING, Any, Dict, Generator, List, Tuple, Union
+from typing import Tuple
 
 import pandas as pd
 from rich.console import Console
@@ -234,8 +223,6 @@ def rich_display_popstars_analytics(df: pd.core.frame.DataFrame):  # noqa
         table.add_row(social, author, url, likes, comments, er, text, date, media)
 
     console.print(table)
-
-
 
 
 # smoke tests

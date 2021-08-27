@@ -246,7 +246,10 @@ pip install -r requirements-doc.txt
 
     ctx.run(_cmd)
 
-    click.secho("[install] install editable version of machine-learning-with-python", fg=COLOR_SUCCESS)
+    click.secho(
+        "[install] install editable version of machine-learning-with-python",
+        fg=COLOR_SUCCESS,
+    )
     ctx.run("pip install -e .")
 
 

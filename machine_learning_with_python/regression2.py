@@ -1,7 +1,8 @@
-import pandas as pd
+import os
 # import Quandl
 import pathlib
-import os
+
+import pandas as pd
 
 from machine_learning_with_python.utils.file_functions import get_dataframe_from_csv
 
@@ -11,23 +12,33 @@ _dir = pathlib.Path(HERE).resolve()
 
 print(_dir.parent)
 
-df = get_dataframe_from_csv(f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv")
+df = get_dataframe_from_csv(
+    f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+)
 
 # We only need some of these categories for linear regression
-df = df[['adj_open',   'adj_high',    'adj_low',  'adj_close',  'adj_volume',]]
+df = df[
+    [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close",
+        "adj_volume",
+    ]
+]
 
 # df["adj_open"] = pd.to_numeric(df["adj_open"], downcast="float")
 # df["adj_open"] = pd.to_numeric(df["adj_open"], downcast="float")
 
 # high minus low column
-df['HL_PCT'] = (df['adj_high'] - df['adj_close']) / df['adj_close'] * 100.0
+df["HL_PCT"] = (df["adj_high"] - df["adj_close"]) / df["adj_close"] * 100.0
 
 # daily percent change
-df['PCT_change'] = (df['adj_close'] - df['adj_open']) / df['adj_open'] * 100.0
+df["PCT_change"] = (df["adj_close"] - df["adj_open"]) / df["adj_open"] * 100.0
 
 # We define a new datafram
 
-df = df[['adj_close', 'HL_PCT', 'PCT_change', 'adj_volume']]
+df = df[["adj_close", "HL_PCT", "PCT_change", "adj_volume"]]
 
 print(df.head())
 
