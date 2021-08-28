@@ -77,17 +77,18 @@ df.dropna(inplace=True)
 
 y = np.array(df['label'])
 
-print(len(X), len(y))
+# print(len(X), len(y))
 
 # training
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)  # 20% of the data
 
 # classifier definition and fit it
-clf = LinearRegression()
+# clf = LinearRegression()  # choice A
+clf = svm.SVR() # change algorithm to   # choice B
 clf.fit(X_train, y_train)  # train
 accuracy = clf.score(X_train, y_train)  # test ( on seperate data, you want to use different data for this to make sure it actually works )
 
-print(f"accuracy = {accuracy}")
+print(f"accuracy = {accuracy}\n")  # 0.000595491194672948 ( not very accurate )
 
 # we are now ready to test, train, and predict
 
