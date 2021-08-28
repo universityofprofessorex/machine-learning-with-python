@@ -20,9 +20,11 @@ _dir = pathlib.Path(HERE).resolve()
 
 print(_dir.parent)
 
-df = get_dataframe_from_csv(
-    f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
-)
+# df = get_dataframe_from_csv(
+#     f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+# )
+
+df = pd.read_parquet(f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv")
 
 # We only need some of these categories for linear regression
 df = df[
