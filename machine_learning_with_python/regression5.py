@@ -4,6 +4,7 @@ import os
 import pathlib
 import time
 
+import datetime
 import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
@@ -15,6 +16,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 from machine_learning_with_python.utils.file_functions import get_dataframe_from_csv
+import matplotlib.pyplot as plt
+from matplotlib import style
+
+style.use('ggplot')
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -129,6 +134,21 @@ print(
     f"forecast_set,accuracy,forecast_out  = {forecast_set},{accuracy},{forecast_out}\n"
 )  # 0.000595491194672948 ( not very accurate )
 
+df["Forecast"] = np.nan
+
+last_date = df.iloc[-1].name
+last_unix = last_date.timestamp()
+one_day = 86400
+next_unix = last_unix + one_day
+
+for i in forecast_set:
+    next_date = datetime.datetime.fromtimestamp(next_unix)
+    next_unix += one_day
+    df.loc[next_date] = [np.nan for _ in range(len(df.columns)-1)] + [i]
+
+df['adj_close'].plot()
+df['Forecast'].plot()
+plt.legend(loc=4)
 # we are now ready to test, train, and predict
 
 # /Users / malcolm / dev / universityofprofessorex / machine - learning - with-python
