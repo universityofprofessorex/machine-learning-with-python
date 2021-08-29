@@ -4,7 +4,9 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 
-def to_parquet(csv_file: str, parquet_file: str, chunksize: int = 100_000, sep: str = "\t") -> None:
+def to_parquet(
+    csv_file: str, parquet_file: str, chunksize: int = 100_000, sep: str = "\t"
+) -> None:
     # csv_file = '/path/to/my.tsv'
     # parquet_file = '/path/to/my.parquet'
     # chunksize = 100_000

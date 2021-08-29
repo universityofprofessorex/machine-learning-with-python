@@ -128,3 +128,6 @@ tests/.vscode
 WIKI_PRICES_212b326a081eacca455e13140d7bb9db.zip
 WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv
 data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.parquet
+data/kaggle/nyse/*.zip
+data/kaggle/nyse/*.csv
+data/kaggle/nyse/*.parquet

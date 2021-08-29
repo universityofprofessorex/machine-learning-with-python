@@ -510,10 +510,8 @@ log:
 folders:
 	scripts/folders.sh
 
-.PHONY: start-full-text-search
-start-full-text-search:
-	scripts/start_meilisearch.sh
-
-.PHONY: start-full-text-search
-start-test-full-text-search:
-	scripts/start_test_meilisearch.sh
+# SOURCE: https://queirozf.com/entries/jupyter-kernels-how-to-add-change-remove
+.PHONY: setup-jupyter-kernel
+setup-jupyter-kernel:
+	ipython kernel install --name "${VENV_NAME}" --user
+# Installed kernelspec machine-learning-with-python3 in /Users/malcolm/Library/Jupyter/kernels/machine-learning-with-python3
