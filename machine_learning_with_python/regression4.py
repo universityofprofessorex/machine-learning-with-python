@@ -1,9 +1,11 @@
 import math
 import os
+import time
 # import Quandl
 import pathlib
 
 import pandas as pd
+import pyarrow.parquet as pq
 
 from machine_learning_with_python.utils.file_functions import get_dataframe_from_csv
 # deprecated: cross validation is used for splitting up data sets
@@ -20,11 +22,28 @@ _dir = pathlib.Path(HERE).resolve()
 
 print(_dir.parent)
 
+csv_file = f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+parquet_file = f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.parquet"
+
+# Read CSV
 # df = get_dataframe_from_csv(
-#     f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
+#     csv_file
 # )
 
-df = pd.read_parquet(f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv")
+# Pandas: Read Parquet
+t1 = time.time()
+df = pd.read_parquet(parquet_file, engine='pyarrow')
+t2 = time.time()
+delta_t = round((t2 - t1), 3)
+print(f"Time it took = {delta_t} seconds\n")
+
+# # PyArrow: Read Parquet
+# # read in parquet file using pyarrow which has significant performance boost
+# t1 = time.time()
+# df = pq.read_table(parquet_file)
+# t2 = time.time()
+# delta_t = round((t2 - t1), 3)
+# print(f"Time it took = {delta_t} seconds\n")
 
 # We only need some of these categories for linear regression
 df = df[
@@ -85,8 +104,8 @@ y = np.array(df['label'])
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)  # 20% of the data
 
 # classifier definition and fit it
-# clf = LinearRegression()  # choice A
-clf = svm.SVR() # change algorithm to   # choice B
+clf = LinearRegression(n_jobs=-1)  # choice A
+# clf = svm.SVR() # change algorithm to   # choice B
 clf.fit(X_train, y_train)  # train
 accuracy = clf.score(X_train, y_train)  # test ( on seperate data, you want to use different data for this to make sure it actually works )
 
