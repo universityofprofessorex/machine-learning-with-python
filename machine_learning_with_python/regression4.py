@@ -1,20 +1,20 @@
 import math
 import os
-import time
 # import Quandl
 import pathlib
+import time
 
+import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
-
-from machine_learning_with_python.utils.file_functions import get_dataframe_from_csv
+from sklearn import preprocessing, svm
+from sklearn.linear_model import LinearRegression
 # deprecated: cross validation is used for splitting up data sets
 # svm = support vector machine. svm is able to perform regression
 # from sklearn import preprocessing, cross_validation, svm
 from sklearn.model_selection import train_test_split
-from sklearn import preprocessing, svm
-from sklearn.linear_model import LinearRegression
-import numpy as np
+
+from machine_learning_with_python.utils.file_functions import get_dataframe_from_csv
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -23,7 +23,9 @@ _dir = pathlib.Path(HERE).resolve()
 print(_dir.parent)
 
 csv_file = f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.csv"
-parquet_file = f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.parquet"
+parquet_file = (
+    f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db.parquet"
+)
 
 # Read CSV
 # df = get_dataframe_from_csv(
@@ -32,7 +34,7 @@ parquet_file = f"{_dir.parent}/data/WIKI_PRICES_212b326a081eacca455e13140d7bb9db
 
 # Pandas: Read Parquet
 t1 = time.time()
-df = pd.read_parquet(parquet_file, engine='pyarrow')
+df = pd.read_parquet(parquet_file, engine="pyarrow")
 t2 = time.time()
 delta_t = round((t2 - t1), 3)
 print(f"Time it took = {delta_t} seconds\n")
@@ -84,9 +86,9 @@ df.dropna(inplace=True)  # Remove missing values.
 # print(df.head())
 
 # features = capital X
-X = np.array(df.drop(['label'], 1))  # get everything except for label
+X = np.array(df.drop(["label"], 1))  # get everything except for label
 # labels = lowercase y
-y = np.array(df['label'])
+y = np.array(df["label"])
 
 # Now we are going to scale x
 # in order to properly scale it, you need to scale them alongside all your other values (when training)
@@ -96,18 +98,22 @@ X = preprocessing.scale(X)
 # X = X[:-forecast_out+1]  # the point of where we were able to forecast the out plus +1
 df.dropna(inplace=True)
 
-y = np.array(df['label'])
+y = np.array(df["label"])
 
 # print(len(X), len(y))
 
 # training
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)  # 20% of the data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2
+)  # 20% of the data
 
 # classifier definition and fit it
 clf = LinearRegression(n_jobs=-1)  # choice A
 # clf = svm.SVR() # change algorithm to   # choice B
 clf.fit(X_train, y_train)  # train
-accuracy = clf.score(X_train, y_train)  # test ( on seperate data, you want to use different data for this to make sure it actually works )
+accuracy = clf.score(
+    X_train, y_train
+)  # test ( on seperate data, you want to use different data for this to make sure it actually works )
 
 print(f"accuracy = {accuracy}\n")  # 0.000595491194672948 ( not very accurate )
 
