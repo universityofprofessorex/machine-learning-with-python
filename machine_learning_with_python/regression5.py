@@ -77,17 +77,14 @@ df.fillna(-99999, inplace=True)
 
 # round everything up to the nearest show number. We are trying to perdict 10% of the dataframe ( that's what the 0.1 is )
 forecast_out = int(math.ceil(0.1 * len(df)))
+print(forecast_out)
 
 # classifier ( the shift is forcasting the columns out negatively)
 df["label"] = df[forecast_col].shift(-forecast_out)
-df.dropna(inplace=True)  # Remove missing values.
-# print(df.head())
-
 # features = capital X
 X = np.array(df.drop(['label'], 1))  # get everything except for label
-# labels = lowercase y
-y = np.array(df['label'])
-
+X = X[:-forecast_out]  # the point of where we were able to forecast the out plus
+X_lately = X[-forecast_out:]  # this is the stuff we are going to predict against
 # Now we are going to scale x
 # in order to properly scale it, you need to scale them alongside all your other values (when training)
 # SOURCE: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.scale.html
@@ -97,9 +94,13 @@ y = np.array(df['label'])
 # Read more in the User Guide.
 X = preprocessing.scale(X)
 
+df.dropna(inplace=True)  # Remove missing values.
+# labels = lowercase y
+y = np.array(df['label'])
+
 # Redefine X (shift) - we don't need to do this because we are dropping the label already
 # X = X[:-forecast_out+1]  # the point of where we were able to forecast the out plus +1
-df.dropna(inplace=True)
+# df.dropna(inplace=True)
 
 y = np.array(df['label'])
 
@@ -115,6 +116,10 @@ clf.fit(X_train, y_train)  # train
 accuracy = clf.score(X_train, y_train)  # test ( on seperate data, you want to use different data for this to make sure it actually works )
 
 print(f"accuracy = {accuracy}\n")  # 0.000595491194672948 ( not very accurate )
+
+forecast_set = clf.predict(X_lately)
+
+print(f"forecast_set,accuracy,forecast_out  = {forecast_set},{accuracy},{forecast_out}\n")  # 0.000595491194672948 ( not very accurate )
 
 # we are now ready to test, train, and predict
 
